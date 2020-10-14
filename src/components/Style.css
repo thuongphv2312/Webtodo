@@ -1,0 +1,68 @@
+.colorGray {
+  color: gray;
+}
+.DeleteHide {
+  display: none;
+}
+.listItems {
+  height: 20px;
+  padding: 5px;
+}
+.listItemshide {
+  display: none;
+}
+.listItemsActive {
+  height: 20px;
+  padding: 5px;
+}
+.listItemsComplete {
+  display: none;
+  height: 20px;
+  padding: 5px;
+}
+.listItemsActive:hover .DeleteHide {
+  display: inline-block;
+  margin-left: 10px;
+}
+.listItemsComplete:hover .DeleteHide {
+  display: inline-block;
+  margin-left: 10px;
+}
+.listItems:hover .DeleteHide {
+  display: inline-block;
+  margin-left: 10px;
+}
+.footer ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.footer button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.footer button:focus {
+  color: red;
+}
+.footer ul li {
+  flex: 1;
+  list-style: none;
+}
+.footer ul li a {
+  text-decoration: none;
+  color: black;
+}
+.footer ul li a {
+  text-decoration: none;
+}
+.footer ul li a {
+  text-decoration: none;
+  color: black;
+}
+.footer ul li a:focus {
+  color: red;
+}
+.footer ul li button:hover {
+  cursor: pointer;
+}
