@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container} from 'react-bootstrap';
 const Footer = (props) => {
 
   const onSubmitAll = () => {
@@ -27,7 +28,7 @@ const Footer = (props) => {
   }
 
   return (
-    <div className='footer'>
+    <Container className='footer'>
       <ul>
         <li>{props.items.length} item left</li>
         <li><button onClick={()=>onSubmitAll()}>All</button></li>
@@ -35,7 +36,7 @@ const Footer = (props) => {
         <li><button onClick={()=>onSubmitComplete()}>Completed</button></li>
         <li><button onClick={()=>onSubmitClear()}>Clear all task completed</button></li>
       </ul>
-    </div>
+    </Container>
   );
 }
 export default Footer;

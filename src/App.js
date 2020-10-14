@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import InputForm from './components/InputForm';
 import Todos from './components/Todos';
 import Filter from './components/Filter';
+import { Container } from 'react-bootstrap';
 function App() {
 
   const [items, setItems] = useState([]);
@@ -45,10 +46,12 @@ function App() {
   }
 
   return (
-    <div>
-      <InputForm onSubmit={onSubmit}/>
-      <Todos items={listtask} onSubmitDelete={onSubmitDelete} onToggleStatus={onToggleStatus}  />
-      <Filter items={items} setItems={setItems} status={items.status} setListTask={setListTask}/>
+    <div className='border'>
+      <Container>
+        <InputForm onSubmit={onSubmit}/>
+        <Todos items={listtask} onSubmitDelete={onSubmitDelete} onToggleStatus={onToggleStatus}  />
+        <Filter items={items} setItems={setItems} status={items.status} setListTask={setListTask}/>
+      </Container>
     </div>
   );
 }

@@ -20,17 +20,23 @@
   height: 20px;
   padding: 5px;
 }
-.listItemsActive:hover .DeleteHide {
-  display: inline-block;
+.todoitem label {
   margin-left: 10px;
 }
-.listItemsComplete:hover .DeleteHide {
-  display: inline-block;
-  margin-left: 10px;
+.todoitem:hover {
+  background-color: aquamarine;
 }
-.listItems:hover .DeleteHide {
+.todoitem:hover .DeleteHide {
   display: inline-block;
   margin-left: 10px;
+  float: right;
+}
+.inputForm {
+  margin-top: 10px;
+  margin-left: 400px;
+}
+.footer {
+  margin-top: 20px;
 }
 .footer ul {
   display: flex;
@@ -65,4 +71,7 @@
 }
 .footer ul li button:hover {
   cursor: pointer;
+}
+.boder {
+  border: 1px solid grey;
 }

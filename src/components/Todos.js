@@ -1,10 +1,11 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 import TodoItem from './TodoItem';
 const Todos = (props) => {
   return (
-    <div>
+    <Container>
       {props.items.map((item) => <TodoItem key={item.id} items={props.items} item={item} onSubmitDelete={props.onSubmitDelete} onToggleStatus={props.onToggleStatus}/>).reverse()}
-    </div>
+    </Container>
   );
 }
 export default Todos;
