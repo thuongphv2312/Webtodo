@@ -6,9 +6,9 @@ const InputForm = (props) => {
   return (
     <Container className='inputForm'>
       <Form inline>
-        <FormControl type="text" placeholder="Type your task" className=" mr-sm-2" onChange={(e) => setTask(e.target.value)} value={task}/>
+        <FormControl type="text" placeholder="Enter your task" className=" mr-sm-2" onChange={(e) => setTask(e.target.value)} value={task}/>
         <Button onClick={() =>
-        { props.onSubmit(task);setTask('')}}>Add</Button>
+        { props.onAdd(task);setTask('')}}>Add</Button>
       </Form>
     </Container>
   );

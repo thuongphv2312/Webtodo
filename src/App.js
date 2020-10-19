@@ -3,54 +3,64 @@ import InputForm from './components/InputForm';
 import Todos from './components/Todos';
 import Filter from './components/Filter';
 import { Container } from 'react-bootstrap';
+export const FILTERS = {
+  ALL: 'all',
+  ACTIVE: 'active',
+  COMPLETED: 'completed',
+};
+
 function App() {
 
   const [items, setItems] = useState([]);
-  const [listtask, setListTask] = useState([]);
 
-  useEffect(() => {
-    setListTask(items);
-  }, [items])
+  const [filter, setFilter] = useState('all');
 
-  const onSubmit = (task) => {
-    var number = Math.random() // 0.9394456857981651
+  const onFilterChange = (fil) => {
+    setFilter(fil);
+  };
+
+  const validate = /^[!@#$%^&*()_+\-=\[\]{};'"\\|,.<>\/?]*$/;
+
+  const onAdd = (task) => {
+    const number = Math.random(); // 0.9394456857981651
     number.toString(36); // '0.xtis06h6'
-    var id = number.toString(36).substr(2, 9); // 'xtis06h6'
+    const id = number.toString(36).substr(2, 9); // 'xtis06h6'
     const todoTask = {
-      id: id,
-      status: false,
+      id,
       content: task,
-    }
-    const validate = /^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/;
+      status: false,
+    };
     if (task.match(validate) === null) {
       setItems([...items, todoTask]);
-    }
-    else {
-      alert('invalid input !!!');
-    }
-  }
+    } else { alert('in valid input'); }
+  };
 
-  const onSubmitDelete = (id) => {
-    const data = items.filter(e => e.id !==  id)
-    setItems(data);
-  }
 
-  const onToggleStatus = (id) => {
-    const newlist = items.map(item => {
+  const onDelete = (id) => {
+    setItems([...items.filter((item) => item.id !== id)]);
+  };
+
+  const onToggleChangeStatus = (id) => {
+    setItems(items.map((item) => {
       if (item.id === id) {
         item.status = !item.status;
       }
       return item;
-    })
-    setItems(newlist);
-  }
+    }));
+  };
+
+  const onToggleClearAllComplete = () => {
+    setItems([...items.filter((item) => item.status !== true)]);
+  };
 
   return (
     <div className='border'>
       <Container>
-        <InputForm onSubmit={onSubmit}/>
-        <Todos items={listtask} onSubmitDelete={onSubmitDelete} onToggleStatus={onToggleStatus}  />
-        <Filter items={items} setItems={setItems} status={items.status} setListTask={setListTask}/>
+        <InputForm onAdd={onAdd}/>
+        <Todos items={items} onDelete={onDelete}
+          filter={filter}
+          onToggleChangeStatus={onToggleChangeStatus} setItems={setItems}/>
+        <Filter items={items} onChange={onFilterChange} status={items.status} onToggleClearAllComplete={onToggleClearAllComplete}/>
       </Container>
     </div>
   );

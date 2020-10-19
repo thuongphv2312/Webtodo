@@ -1,42 +1,16 @@
 import React from 'react';
-import { Container} from 'react-bootstrap';
-const Footer = (props) => {
-
-  const onSubmitAll = () => {
-    var newArrayTask = props.items.filter(item => item.status ===  false || true);
-    props.setListTask(newArrayTask);
-    console.log('All item',newArrayTask );
-  }
-
-  const onSubmitActive = () => {
-    var newArrayTask = props.items.filter(item => item.status === false);
-    props.setListTask(newArrayTask);
-    console.log('Active item', newArrayTask);
-  }
-
-  const onSubmitComplete = () => {
-    var newArrayTask = props.items.filter(item => item.status === true);
-    props.setListTask(newArrayTask);
-    console.log('Complete item', newArrayTask);
-  }
-
-  const onSubmitClear = () => {
-    var newArrayTask = props.items.filter(item => item.status !== true);
-    props.setItems(newArrayTask);
-    props.setListTask(newArrayTask);
-    console.log('Clear item', newArrayTask);
-  }
-
+import { Button, ButtonGroup, Container } from 'react-bootstrap';
+import { FILTERS } from '../App';
+const Filter = ({ onChange, onToggleClearAllComplete }) => {
   return (
-    <Container className='footer'>
-      <ul>
-        <li>{props.items.length} item left</li>
-        <li><button onClick={()=>onSubmitAll()}>All</button></li>
-        <li><button onClick={()=>onSubmitActive()}>Active</button></li>
-        <li><button onClick={()=>onSubmitComplete()}>Completed</button></li>
-        <li><button onClick={()=>onSubmitClear()}>Clear all task completed</button></li>
-      </ul>
-    </Container>
+    <Container>
+    <ButtonGroup aria-label="Basic example">
+      <Button variant="secondary" style={{ color: 'white' }} onClick={() => onChange(FILTERS.ALL)}>All</Button>
+      <Button variant="secondary" onClick={() => onChange(FILTERS.ACTIVE)}>Active</Button>
+      <Button variant="secondary" onClick={() => onChange(FILTERS.COMPLETED)}>Completed</Button>
+      <Button variant="secondary" onClick={() => onToggleClearAllComplete()}>Clear all task completed</Button>
+    </ButtonGroup>
+  </Container>
   );
 }
-export default Footer;
+export default Filter;
